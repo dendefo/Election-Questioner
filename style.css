@@ -22,3 +22,18 @@ button:hover { background: #00458a; }
 .party-stats { font-size: 1.2rem; color: #444; line-height: 1.6; }
 .match-excellent { color: #2ca02c; font-weight: bold; }
 .match-poor { color: #d62728; font-weight: bold; }
+
+/* Dark Theme */
+body.dark { background: #121212; color: #e0e0e0; }
+body.dark #app { background: #1e1e1e; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+body.dark header { border-bottom: 2px solid #333; }
+body.dark #language-selector button { background: #333; color: #e0e0e0; }
+body.dark #language-selector button:hover { background: #444; }
+body.dark #language-selector button.active { background: #005eb8; color: white; }
+body.dark .chart-box { border: 1px solid #333; }
+body.dark .party-item { background: #252525; box-shadow: 0 4px 15px rgba(0,0,0,0.3); border-color: #444; }
+body.dark .party-stats { color: #ccc; }
+body.dark #mandates-container { background: rgba(255,255,255,0.05) !important; }
+body.dark #landing-container p[data-i18n="landing-desc2"] { background: #332d15 !important; border-color: #554411 !important; color: #eedd99 !important; }
+body.dark #landing-container p[data-i18n="landing-desc3"] { background: #15331f !important; border-color: #115522 !important; color: #99eeaa !important; }
+body.dark footer { border-top: 1px solid #333 !important; color: #aaa !important; }

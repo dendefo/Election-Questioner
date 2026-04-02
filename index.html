@@ -7,10 +7,13 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div id="language-selector">
-        <button onclick="setLanguage('en')">English</button>
-        <button onclick="setLanguage('he')">עברית</button>
-        <button onclick="setLanguage('ru')">Русский</button>
+    <div style="display: flex; justify-content: space-between; width: 100%; max-width: 1200px; margin-bottom: 20px;" dir="ltr">
+        <div id="language-selector">
+            <button onclick="setLanguage('en')">English</button>
+            <button onclick="setLanguage('he')">עברית</button>
+            <button onclick="setLanguage('ru')">Русский</button>
+        </div>
+        <button id="theme-toggle" onclick="toggleTheme()" data-i18n="theme-toggle" style="background: #333; color: white;">🌓 Toggle Theme</button>
     </div>
     <div id="app">
         <header>
@@ -63,8 +66,8 @@
         </div>
     </div>
     <script src="script.js"></script>
-    <footer style="text-align: center; padding: 20px; font-size: 0.9em; color: #666; margin-top: 40px; border-top: 1px solid #ddd;">
-        &copy; Dendefo | <a href="https://t.me/Dendefo" target="_blank" style="color: #0088cc; text-decoration: none;">Contact me on Telegram</a>
+    <footer style="text-align: center; padding: 20px; font-size: 0.9em; color: #666; margin-top: 40px; border-top: 1px solid #ddd;" dir="ltr">
+        &copy; Dendefo | <a href="https://t.me/Dendefo" target="_blank" data-i18n="contact-link" style="color: #0088cc; text-decoration: none;">Contact me on Telegram</a>
     </footer>
 </body>
 </html>

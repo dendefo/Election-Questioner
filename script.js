@@ -25,6 +25,8 @@ const translations = {
         'mandates-title': "Current Predicted Mandates",
         'match-fit': "Closest alignment:",
         'match-unfit': "Biggest disagreement:",
+        'theme-toggle': "🌓 Toggle Theme",
+        'contact-link': "Contact me on Telegram",
         labels: {
             'Security': 'Security', 'Secularism': 'Secularism', 'Anti-Status-Quo': 'Anti-Status-Quo', 'Zionism': 'Zionism',
             'You': 'You',
@@ -52,6 +54,8 @@ const translations = {
         'mandates-title': "מנדטים חזויים כעת",
         'match-fit': "הסכמה החזקה ביותר:",
         'match-unfit': "הפער הגדול ביותר:",
+        'theme-toggle': "🌓 החלף מצב",
+        'contact-link': "צור קשר בטלגרם",
         labels: {
             'Security': 'ביטחון', 'Secularism': 'חילוניות', 'Anti-Status-Quo': 'אנטי-סטטוס-קוו', 'Zionism': 'ציונות',
             'You': 'את/ה',
@@ -79,6 +83,8 @@ const translations = {
         'mandates-title': "Текущие прогнозы мандатов",
         'match-fit': "Наибольшее согласие:",
         'match-unfit': "Главное разногласие:",
+        'theme-toggle': "🌓 Сменить тему",
+        'contact-link': "Свяжитесь со мной в Telegram",
         labels: {
             'Security': 'Безопасность', 'Secularism': 'Светскость', 'Anti-Status-Quo': 'Анти-статус-кво', 'Zionism': 'Сионизм',
             'You': 'Вы',
@@ -126,7 +132,34 @@ function setLanguage(lang) {
     }
 }
 
+function toggleTheme() {
+    document.body.classList.toggle('dark');
+    if (document.body.classList.contains('dark')) {
+        localStorage.setItem('theme', 'dark');
+        Chart.defaults.color = '#ccc';
+        Chart.defaults.borderColor = '#444';
+    } else {
+        localStorage.setItem('theme', 'light');
+        Chart.defaults.color = '#666';
+        Chart.defaults.borderColor = '#ddd';
+    }
+    // Update charts if they exist
+    if (document.getElementById('results-container').style.display === 'block') {
+        calculateResults();
+    }
+}
+
 async function init() {
+    // Load saved theme
+    if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.body.classList.add('dark');
+        Chart.defaults.color = '#ccc';
+        Chart.defaults.borderColor = '#444';
+    } else {
+        Chart.defaults.color = '#666';
+        Chart.defaults.borderColor = '#ddd';
+    }
+
     const res = await fetch('questions.json');
     questions = await res.json();
     setLanguage(currentLang);
@@ -538,7 +571,10 @@ function drawRadar(s, r, l, z, tr) {
                 r: { 
                     min: 1, max: 5,
                     pointLabels: { font: { size: 14, weight: 'bold' } },
-                    ticks: { font: { size: 12 } }
+                    ticks: { 
+                        font: { size: 12 },
+                        backdropColor: document.body.classList.contains('dark') ? '#1e1e1e' : 'rgba(255, 255, 255, 0.75)'
+                    }
                 } 
             },
             plugins: {
