@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title data-i18n="title">Israel 2026 Political Mapper</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="language-selector">
+        <button onclick="setLanguage('en')">English</button>
+        <button onclick="setLanguage('he')">עברית</button>
+        <button onclick="setLanguage('ru')">Русский</button>
+    </div>
+    <div id="app">
+        <header>
+            <h1><span data-i18n="header-title">Israel Election Mapper</span> <span class="year" data-i18n="header-year">April 2026</span></h1>
+            <p data-i18n="header-desc">Determine your position in the 26th Knesset landscape.</p>
+        </header>
+
+        <div id="landing-container" style="text-align: center; padding: 10px 20px 30px;">
+            <p data-i18n="landing-desc1" style="font-size: 1.15rem; margin-bottom: 20px;"></p>
+            <p data-i18n="landing-desc2" style="font-size: 1rem; margin-bottom: 20px; color: #664d03; background: #fff3cd; padding: 15px; border-radius: 8px; border: 1px solid #ffe69c;"></p>
+            <p data-i18n="landing-desc3" style="font-size: 1rem; margin-bottom: 35px; color: #155724; background: #d4edda; padding: 15px; border-radius: 8px; border: 1px solid #c3e6cb; font-weight: bold;"></p>
+            <button onclick="startQuiz()" id="start-btn" data-i18n="start-btn" style="font-size: 1.2rem; padding: 15px 40px;"></button>
+        </div>
+
+        <div id="quiz-container" style="display:none;">
+            <div id="question-card">
+                <p id="question-text"></p>
+                <div class="scale-container">
+                    <span data-i18n="scale-disagree">Strongly Disagree</span>
+                    <input type="range" id="scale-input" min="1" max="5" step="1" value="3">
+                    <span data-i18n="scale-agree">Strongly Agree</span>
+                </div>
+                <button onclick="nextQuestion()" id="next-btn" data-i18n="next-btn">Next Question</button>
+            </div>
+        </div>
+
+        <div id="results-container" style="display:none;">
+            <h2 data-i18n="results-title">Your Political Coordinates</h2>
+            <div class="charts">
+                <div class="chart-box">
+                    <h3 data-i18n="chart-2d">2D Political Compass</h3>
+                    <canvas id="compassChart"></canvas>
+                </div>
+                <div class="chart-box">
+                    <h3 data-i18n="chart-4d">4D Identity Dimensions</h3>
+                    <div id="radar-checkboxes" style="margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; font-size: 1.1em;"></div>
+                    <canvas id="radarChart"></canvas>
+                </div>
+            </div>
+            
+            <div id="mandates-container" style="display:none; margin: 40px auto; max-width: 900px; padding: 20px; background: rgba(0,0,0,0.03); border-radius: 12px;">
+                <h2 id="mandates-title" style="text-align: center; margin-bottom: 20px;" data-i18n="mandates-title">Current Predicted Mandates</h2>
+                <div style="height: 350px; position:relative;">
+                    <canvas id="mandatesChart"></canvas>
+                </div>
+            </div>
+
+            <div id="party-match-list"></div>
+            <button onclick="location.reload()" data-i18n="restart-btn" style="margin: 40px auto; display: block; font-size: 1.2em; padding: 15px 40px;">Restart</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

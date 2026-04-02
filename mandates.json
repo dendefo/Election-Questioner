@@ -1,0 +1,18 @@
+{
+  "updatedAt": "2026-04-02",
+  "source": "Aggregated Polling Average (Ch 12, Maariv, Kan 11)",
+  "sourceLink": "https://en.wikipedia.org/wiki/Opinion_polling_for_the_2026_Israeli_legislative_election",
+  "mandates": {
+    "Likud": 23,
+    "Bennett (New Right)": 21,
+    "National Unity": 14,
+    "Yisrael Beiteinu": 13,
+    "Shas": 10,
+    "Yesh Atid": 9,
+    "The Democrats": 8,
+    "UTJ": 8,
+    "Rel. Zionism / Otzma": 5,
+    "Hadash-Ta'al": 5,
+    "Ra'am": 4
+  }
+}
